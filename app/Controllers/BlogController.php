@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Blog;
 
 class BlogController extends BaseController
 {
@@ -31,4 +32,15 @@ class BlogController extends BaseController
 
 		return redirect()->to('form'); 
 	}
+
+    public function viewEntries()
+    {
+        $blogModel = new Blog();
+        $data['entries'] = $blogModel->findAll(); // Obtén todas las entradas del blog
+
+        return view('blog-entries', $data); // Crea una nueva vista para mostrar las entradas
+    }
+
+    
+   
 }
