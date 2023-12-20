@@ -36,11 +36,49 @@ class BlogController extends BaseController
     public function viewEntries()
     {
         $blogModel = new Blog();
-        $data['entries'] = $blogModel->findAll(); // Obtén todas las entradas del blog
+        $data['entries'] = $blogModel->findAll();
 
-        return view('blog-entries', $data); // Crea una nueva vista para mostrar las entradas
+        return view('blog-entries', $data);
     }
 
-    
+    public function editEntry($entryId)
+    {
+        $blogModel = new Blog();
+        $data['entry'] = $blogModel->find($entryId);
+
+        return view('edit-entry', $data);
+    }
+
+    public function updateEntry()
+    {
+        $input = $this->request->getVar();
+
+        $blogObject = new Blog();
+
+        $data = [
+            'title' => $input['title'],
+            'author_name' => $input['author_name'],
+            'content' => $input['content']
+        ];
+
+        $blogObject->update($input['id'], $data);
+
+        $session = session();
+
+        $session->setFlashdata('success', 'Entry updated successfully!');
+
+        return redirect()->to('viewEntries');
+    }
+
+    public function viewEntry($entryId)
+    {
+        $blogModel = new Blog();
+        $data['entry'] = $blogModel->find($entryId);
+
+        return view('view-entry', $data);
+    }
+
+
+
    
 }

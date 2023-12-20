@@ -35,11 +35,11 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('description-ckeditor');
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 </body>
 
 </html>
